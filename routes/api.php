@@ -66,3 +66,11 @@ Route::post('v1/enterprise_authentication/update', function (Request $request) {
     }
 });
 
+/**
+ * 新增路由信息
+ * 
+ * @author Lee<a605333742@gmail.com>
+ * @date    2019-01-16
+ */
+
+

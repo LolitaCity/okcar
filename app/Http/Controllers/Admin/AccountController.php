@@ -19,6 +19,7 @@ class AccountController extends Controller
     public function login()
     {
         $req = request();
+        //var_dump($req);exit;
         return $this->json([
             'success' => $this->service->login(
                 $req->input('username'),
