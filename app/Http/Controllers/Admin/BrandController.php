@@ -1,4 +1,10 @@
 <?php
+/**
+ * 品牌管理
+ * 
+ * @author  nobody
+ * @date    2019-01-17
+ */
 
 namespace App\Http\Controllers\Admin;
 

@@ -1,0 +1,8 @@
+1.
+    api\app\Http\Controllers\Admin\SeriesController.php
+    api\app\Models\SeriesInfo.php
+    缺series_info表
+2.
+    api\app\Http\Controllers\Admin\PayModeController.php
+    api\app\Models\PayModelnfo.php
+    缺pay_mode表

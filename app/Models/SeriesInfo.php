@@ -5,7 +5,7 @@ namespace App\Models;
 
 class SeriesInfo extends BaseModel
 {
-    public $table = 'model_info';
+    public $table = 'series_info';
 
     public $timestamps = false;
 
