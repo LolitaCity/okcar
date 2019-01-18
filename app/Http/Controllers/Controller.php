@@ -21,7 +21,7 @@ class Controller extends BaseController
     }
     
     /**
-     * json返回格式确定
+     * json 返回格式确定
      * 
      * @param type $data
      * @return type

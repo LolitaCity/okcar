@@ -31,15 +31,15 @@ class AccountController extends Controller
         $vcode = $request->input('vcode');          //用户输入的验证码
         $debug = $request->input('debug');
 
-        if ($debug != 'true' && !($phone == config('okcar.no_check_phone') && $vcode == config('okcar.no_check_vcode'))) {
-            $key = sprintf('%s_%s', $phone, $ticketId);
-            $code = Cache::get($key);
-            Cache::forget($key);
-
-            if ($code !== $vcode || empty($code)) {
-                throw new AppException('验证码错误', 1);
-            }
-        }
+//        if ($debug != 'true' && !($phone == config('okcar.no_check_phone') && $vcode == config('okcar.no_check_vcode'))) {
+//            $key = sprintf('%s_%s', $phone, $ticketId);
+//            $code = Cache::get($key);
+//            Cache::forget($key);
+//
+//            if ($code !== $vcode || empty($code)) {
+//                throw new AppException('验证码错误', 1);
+//            }
+//        }
 
         $created = User::firstOrCreate(
             ['phone' => $phone],

@@ -72,5 +72,5 @@ Route::post('v1/enterprise_authentication/update', function (Request $request) {
  * @author Lee<a605333742@gmail.com>
  * @date    2019-01-16
  */
-
+Route::post('v1/creathouse','Api\CommonController@createHouse');
 

@@ -1,13 +1,16 @@
 <?php
 /**
- * 上行代码测试
+ * 上行接口
  * 
  * @author  Lee<a605333742@gmail.com>
  * @date    2019-01-16
  */
-namespace App\Http\Controllers\Upstream;
+namespace App\Http\Controllers\Api;
 
 use App\Http\Controllers\Controller;
+use Illuminate\Http\Request;
+use App\Library\Util;
+use App\Models\User;
 
 class TestController extends Controller{
     /**
@@ -24,7 +27,12 @@ class TestController extends Controller{
      * 
      * @return #
      */
-    public function index(){
-        echo 333;exit;
+    public function index(Request $request){
+        $area   = config("arealist");
+        $key    =[];
+        foreach ($area as $k=>$v){
+            $key[]  =$k;
+        }
+        return $this->json($key);
     }
 }
