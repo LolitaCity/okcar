@@ -80,3 +80,15 @@ Route::post('v1/getStoreHouseInfo','Api\StoreHouseController@getStoreHouseInfo')
 Route::post('v1/editStoreHouse','Api\StoreHouseController@editStoreHouse');
 Route::post('v1/deleteStoreHouse','Api\StoreHouseController@deleteStoreHouse');
 
+//地区列表
+Route::post('v1/getarealist','Api\AreaController@getAreaList');
+Route::post('v1/getareainfo','Api\AreaController@getAreaInfo');
+
+//订单
+Route::post('v1/getorderlist','Api\AreaListController@getOrderList');
+Route::post('v1/getorderinfo','Api\AreaListController@getOrderInfo');
+Route::post('v1/createorder','Api\AreaListController@createOrder');
+Route::post('v1/editorder','Api\AreaListController@editOrder');
+Route::post('v1/deleteorder','Api\AreaListController@deleteOrder');
+Route::post('v1/setorderstatus','Api\AreaListController@setOrderStatus');
+

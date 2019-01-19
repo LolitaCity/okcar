@@ -8,11 +8,14 @@
 
 namespace App\Models;
 
+use Illuminate\Database\Eloquent\SoftDeletes;
 
 class Order extends BaseModel
 {
+    use SoftDeletes;
     public $table = 'order';
-
+    //设置主键
+    public $primaryKey = 'id';
     protected $fillable = [
         'buyer_id',
         'publish_info_id',
@@ -22,5 +25,5 @@ class Order extends BaseModel
         'comment',
         'status'
     ];
-
+    protected $dates = ['deleted_at'];
 }

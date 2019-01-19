@@ -12,6 +12,7 @@ use App\Services\StoreHouseService;
 
 class StoreHouseController extends Controller{
     protected $service;
+    protected $result;
     /**
      * 构造函数
      * 
@@ -27,7 +28,8 @@ class StoreHouseController extends Controller{
      * @return #
      */
     public function creatStoreHouse(){
-        return $this->json($this->service->create(request()->all()));
+        $this->result['createStoreHouse']   =$this->service->createStoreHouse(request()->all());
+        return $this->json($this->result);
     }
     
     /**
@@ -36,7 +38,8 @@ class StoreHouseController extends Controller{
      * @return #
      */
     public function getAllStoreHouseList(){
-        return $this->json($this->service->allStoreHouseList(request()->all()));
+        $this->result['allStoreHouseList']  =$this->service->allStoreHouseList(request()->all());
+        return $this->json($this->result);
     }
     
     /**
@@ -45,7 +48,8 @@ class StoreHouseController extends Controller{
      * @return #
      */
     public function getStoreHouseList(){
-        return $this->json($this->service->storeHouseList(request()->all()));
+        $this->result['storeHouseList'] =$this->service->storeHouseList(request()->all());
+        return $this->json($this->result);
     }
     
     /**
@@ -54,7 +58,8 @@ class StoreHouseController extends Controller{
      * @return #
      */
     public function getStoreHouseInfo(){
-        return $this->json($this->service->storeHouseInfo(request()->all()));
+        $this->result['storeHouseInfo'] =$this->service->storeHouseInfo(request()->all());
+        return $this->json($this->result);
     }
     
     /**
@@ -63,7 +68,8 @@ class StoreHouseController extends Controller{
      * return #
      */
     public function editStoreHouse(){
-        return $this->json($this->service->editStoreHouse(request()->all()));
+        $this->result['editStoreHouse'] =$this->service->editStoreHouse(request()->all());
+        return $this->json($this->result);
     }
     
     /**
@@ -72,6 +78,7 @@ class StoreHouseController extends Controller{
      * @return #
      */
     public function deleteStoreHouse(){
-        return $this->json($this->service->deleteStoreHouse(request()->all()));
+        $this->result['deleteStoreHouse']   =$this->service->deleteStoreHouse(request()->all());
+        return $this->json($this->result);
     }
 }

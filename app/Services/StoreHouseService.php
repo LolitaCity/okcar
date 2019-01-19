@@ -12,13 +12,7 @@ use App\Library\Util;
 use Illuminate\Support\Facades\Auth;
 
 class StoreHouseService{
-    /**
-     * 新增仓库验证
-     * 
-     * @return #
-     */
-    public function create(array $item){
-        $validator = [
+    private $validator = [
             'province_code' => 'required|integer',
             'city_code' => 'required|integer',
             'area_code' =>'integer',
@@ -27,7 +21,7 @@ class StoreHouseService{
             'address'   =>'string',
             'default_flag'  =>'integer'
         ];
-        $errorMsg = [
+    private    $errorMsg = [
             'province_code.required'=> '省编码必填',
             'province_code.integer' => '省编码必须是整数',
             'city_code.required'=> '城市编码必填',
@@ -37,12 +31,18 @@ class StoreHouseService{
             'name.*'    => '仓库名称不正确',
             'address.*' => '仓库地址不正确',
             'default_flag.*'    => '默认值必须为整数',            
-        ];      
-        $data = Util::validate($item, $validator, $errorMsg);
+        ];  
+    /**
+     * 新增仓库
+     * 
+     * @return #
+     */
+    public function createStoreHouse(array $item){            
+        $data = Util::validate($item, $this->validator, $this->errorMsg);
         $data['created_id'] =Auth::user()->id;
         $data['updated_id'] =Auth::user()->id;
         $result =StoreHouse::create($data);
-        if($result && isset($data['default_flag'])&&$data['default_flag']){
+        if($result && isset($data['default_flag'])&&$data['default_flag']==1){
             StoreHouse::where(function($query)use($result){
                 $query->where('id','<>',$result->id)->where('created_id','=',$result->created_id);
             })->update(['default_flag'=>0]);
@@ -93,27 +93,11 @@ class StoreHouseService{
     public function editStoreHouse(array $item){
         $validator = [
             'id' => 'required|integer',
-            'province_code' => 'required|integer',
-            'city_code' => 'required|integer',
-            'area_code' =>'integer',
-            'type'  =>"integer",
-            'name'  =>'string',
-            'address'   =>'string',
-            'default_flag'  =>'integer'
         ];
         $errorMsg = [
-            'id.*'=> '仓库不存在',
-            'province_code.required'=> '省编码必填',
-            'province_code.integer' => '省编码必须是整数',
-            'city_code.required'=> '城市编码必填',
-            'city_code.integer' => '城市编码必须是整数',
-            'area_code.integer' => '地区编码必须是整数',
-            'type.integer'      => '类型必须是数字',
-            'name.*'    => '仓库名称不正确',
-            'address.*' => '仓库地址不正确',
-            'default_flag.*'    => '默认值必须为整数',            
+            'id.*'=> '仓库不存在',            
         ]; 
-        $data   =Util::validate($item, $validator, $errorMsg);
+        $data   =Util::validate($item, array_merge($this->validator,$validator), array_merge($this->errorMsg,$errorMsg));
         $data['updated_at'] =date("Y-m-d H:i:s");
         $data['updated_id'] =Auth::user()->id;
         $result =StoreHouse::where('id','=',$data['id'])->update($data);
