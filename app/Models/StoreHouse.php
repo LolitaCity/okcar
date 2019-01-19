@@ -7,8 +7,13 @@
  */
 namespace App\Models;
 
+use Illuminate\Database\Eloquent\SoftDeletes;
+
 class StoreHouse extends BaseModel{
+    use SoftDeletes;
     public $table = 'store_house';
+    //设置主键
+    public $primaryKey = 'id';
     protected $fillable=[
         'province_code',
         'city_code',
@@ -20,4 +25,5 @@ class StoreHouse extends BaseModel{
         'created_id',
         'updated_id'
     ];
+    protected $dates = ['deleted_at'];    
 }

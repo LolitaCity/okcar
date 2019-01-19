@@ -18,5 +18,6 @@ create table `store_house`(
 `created_id` int(10) default null COMMENT '创建人Id（买家用户id）',
 `updated_at` timestamp NULL DEFAULT NULL COMMENT '修改时间',
 `updated_id` int(10) default null COMMENT '修改人Id',
+`deleted_at` timestamp NULL DEFAULT NULL COMMENT '软删除时间',
 PRIMARY KEY (`id`)
 )ENGINE=InnoDB DEFAULT CHARSET=utf8  COMMENT='仓库表';

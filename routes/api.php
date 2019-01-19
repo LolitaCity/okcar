@@ -72,5 +72,11 @@ Route::post('v1/enterprise_authentication/update', function (Request $request) {
  * @author Lee<a605333742@gmail.com>
  * @date    2019-01-16
  */
-Route::post('v1/creathouse','Api\CommonController@createHouse');
+
+//仓库接口
+Route::post('v1/creathouse','Api\StoreHouseController@creatStoreHouse');
+Route::post('v1/gethouselist','Api\StoreHouseController@getStoreHouseList');
+Route::post('v1/getStoreHouseInfo','Api\StoreHouseController@getStoreHouseInfo');
+Route::post('v1/editStoreHouse','Api\StoreHouseController@editStoreHouse');
+Route::post('v1/deleteStoreHouse','Api\StoreHouseController@deleteStoreHouse');
 
