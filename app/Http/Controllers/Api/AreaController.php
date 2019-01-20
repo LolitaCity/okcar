@@ -9,6 +9,8 @@ namespace App\Http\Controllers\Api;
 
 use App\Http\Controllers\Controller;
 use App\Exceptions\AppException;
+use App\Models\OkcarStoreHouse;
+use App\Models\Area;
 
 class AreaController extends Controller{
     protected $result;
@@ -52,5 +54,21 @@ class AreaController extends Controller{
         $this->result['areaInfo']['code']   =$areaInfo[0]['id'];
         $this->result['areaInfo']['area_name']  =$areaInfo[0]['name'];
         return $this->json($this->result);
+    }
+    
+    /**
+     * 
+     */
+    public function getareaStoreHouseList(){
+        $t1 = microtime(true);
+        $areaList= Area::get();
+        $storeHouseList = OkcarStoreHouse::get();
+        $result =[
+            'areaList'  =>$areaList,
+            'storeHouseList'=>$storeHouseList
+        ];
+        $t2 = microtime(true);
+        echo '耗时'.round($t2-$t1,3).'秒';exit;
+        return $this->json($result);
     }
 }

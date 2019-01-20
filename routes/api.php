@@ -83,6 +83,7 @@ Route::post('v1/deleteStoreHouse','Api\StoreHouseController@deleteStoreHouse');
 //地区列表
 Route::post('v1/getarealist','Api\AreaController@getAreaList');
 Route::post('v1/getareainfo','Api\AreaController@getAreaInfo');
+Route::post('v1/getareahouselist','Api\AreaController@getareaStoreHouseList');
 
 //订单
 Route::post('v1/getorderlist','Api\OrderController@getOrderList');

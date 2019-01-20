@@ -7,9 +7,7 @@
 DROP TABLE IF EXISTS `store_house`;
 create table `store_house`(
 `id` int(10) unsigned NOT NULL AUTO_INCREMENT COMMENT '自增id',
-`province_code` int(10) default null COMMENT '地区省编码', 
-`city_code` int(10) default null COMMENT '城市编码', 
-`area_code` int(10) default null COMMENT '地区编码', 
+`area` varchar(30) default null COMMENT '仓库地区（省市区）', 
 `type` tinyint(1) NOT NULL default 0 COMMENT '仓库类型，0集中仓，1经销商仓',
 `name` varchar(50) NOT NULL default '' COMMENT '仓库名称',
 `address` varchar(150) NOT NULL default '' COMMENT '详细地址',
