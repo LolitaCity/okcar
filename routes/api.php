@@ -85,10 +85,11 @@ Route::post('v1/getarealist','Api\AreaController@getAreaList');
 Route::post('v1/getareainfo','Api\AreaController@getAreaInfo');
 
 //订单
-Route::post('v1/getorderlist','Api\AreaListController@getOrderList');
-Route::post('v1/getorderinfo','Api\AreaListController@getOrderInfo');
-Route::post('v1/createorder','Api\AreaListController@createOrder');
-Route::post('v1/editorder','Api\AreaListController@editOrder');
-Route::post('v1/deleteorder','Api\AreaListController@deleteOrder');
-Route::post('v1/setorderstatus','Api\AreaListController@setOrderStatus');
-
+Route::post('v1/getorderlist','Api\OrderController@getOrderList');
+Route::post('v1/getorderinfo','Api\OrderController@getOrderInfo');
+Route::post('v1/createorder','Api\OrderController@createOrder');
+Route::post('v1/editorder','Api\OrderController@editOrder');
+Route::post('v1/deleteorder','Api\OrderController@deleteOrder');
+Route::post('v1/setorderstatus','Api\OrderController@setOrderStatus');
+Route::post('v1/getorderdetailedinfo','Api\OrderController@getOrderDetailedInfo');
+Route::post('v1/getorderaddress','Api\OrderController@getOrderAddress');

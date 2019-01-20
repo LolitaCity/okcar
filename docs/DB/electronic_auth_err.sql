@@ -4,8 +4,8 @@
  * @author   Lee<a605333742@gmail.com>
  * @date     20109-01-18
  */
-DROP TABLE IF EXISTS `electronic_seal`;
-create table `electronic_seal`(
+DROP TABLE IF EXISTS `electronic_auth_err`;
+create table `electronic_auth_err`(
 `id` int(10) unsigned NOT NULL AUTO_INCREMENT COMMENT '自增id',
 `auth_id` int(10) default null COMMENT '授权Id',
 `remark` varchar(150) not null default '' COMMENT '拒绝说明',

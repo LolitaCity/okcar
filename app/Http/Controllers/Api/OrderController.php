@@ -32,12 +32,32 @@ class OrderController extends Controller{
     }
     
     /**
-     * 指定订单信息详细信息
+     * 指定订单信息
      * 
      * @return #
      */
     public function getOrderInfo(){
         $this->result['orderInfo']  =$this->service->orderInfo(request()->all());
+        return $this->json($this->result);
+    }
+    
+    /**
+     * 获取订单详细信息
+     * 
+     * @return #
+     */
+    public function getOrderDetailedInfo(){
+        $this->result['orderDetailedInfo']  =$this->service->orderDetailedInfo(request()->all());
+        return $this->json($this->result);
+    }
+    
+    /**
+     * 获取订单地址信息
+     * 
+     * @return #
+     */
+    public function getOrderAddress(){
+        $this->result['orderaddress']  =$this->service->orderAddress(request()->all());
         return $this->json($this->result);
     }
     

@@ -8,6 +8,7 @@
 namespace App\Http\Controllers\Api;
 
 use App\Http\Controllers\Controller;
+use App\Exceptions\AppException;
 
 class AreaController extends Controller{
     protected $result;
@@ -26,9 +27,12 @@ class AreaController extends Controller{
      * 
      * @return #
      */
-    public function getAreaInfo($map=''){
+    public function getAreaInfo($map=[]){
         if(request()->all()){
             $map=request()->all();
+        }
+        if(!isset($map['area_code'])){
+            throw new AppException("地区code不能为空", 1);
         }
         $areaList   =config('arealist');
         $areaArr    =[];

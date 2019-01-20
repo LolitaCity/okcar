@@ -17,8 +17,8 @@ use App\Models\OrderInfos;
 use App\Models\StoreHouse;
 use App\Http\Controllers\Api\AreaListController;
 use App\Models\OrderAddress;
-use Illuminate\Support\Facades\Auth;
 use App\Models\OrderOptionRecord;
+use App\Exceptions\AppException;
 
 class ApiOrderService{
     private $validator = [
@@ -129,11 +129,11 @@ class ApiOrderService{
     }
     
     /**
-     * 获取指定订单详细信息
+     * 获取指定订单信息
      * 
      * @return #
      */
-    public function storeHouseInfo(array $item){
+    public function orderInfo(array $item){
         $validator = [
             'id' => 'required|integer'
         ];
@@ -145,34 +145,37 @@ class ApiOrderService{
     }
     
     /**
-     * 编辑指定用户用户订单
+     * 获取指定订单详细信息
      * 
      * @return #
      */
-    public function editStoreHouse(array $item){
+    public function OrderDetailedInfo(array $item){
         $validator = [
-            'id' => 'required|integer',
+            'order_id' => 'required|integer'
         ];
         $errorMsg = [
-            'id.*'=> '订单不存在',            
-        ]; 
-        $data   =Util::validate($item, array_merge($this->validator,$validator), array_merge($this->errorMsg,$errorMsg));
-        $data['updated_at'] =date("Y-m-d H:i:s");
-        $result =Order::where('id','=',$data['id'])->update($data);
-        $map=[
-            'user_id'   =>Auth::user()->id,
-            'remark'    =>"编辑订单",
+            'order_id.*'=> '订单不存在'
         ];
-        $orderRecord= OrderOptionRecord::create($map);
-        DB::beginTransaction();
-        if($result && $orderRecord){
-            DB::commit();
-            return $result;
-        }
-        DB::rollback();
-        throw new AppException('订单创建失败');
+        $data = Util::validate($item, $validator, $errorMsg);
+        return OrderInfos::find($data);
     }
     
+    /**
+     * 获取指定订单地址信息
+     * 
+     * @return #
+     */
+    public function orderAddress(array $item){
+        $validator = [
+            'order_id' => 'required|integer'
+        ];
+        $errorMsg = [
+            'order_id.*'=> '订单不存在'
+        ];
+        $data = Util::validate($item, $validator, $errorMsg);
+        return OrderAddress::find($data);
+    }
+            
     /**
      * 删除指定订单
      * 
@@ -188,7 +191,7 @@ class ApiOrderService{
         $data   =Util::validate($item, $validator, $errorMsg);
         $map=[
             'user_id'   =>Auth::user()->id,
-            'remark'    =>"编辑订单",
+            'remark'    =>"删除订单",
         ];
         $orderRecord    =OrderOptionRecord::create($map);
         $deleteResult   =Order::find($data['id'])->delete();
@@ -199,7 +202,7 @@ class ApiOrderService{
             return true;
         }
         DB::rollback();
-        throw new AppException('订单删除失败');
+        throw new AppException('删除订单失败',1);
     }
     
     /**
@@ -227,7 +230,7 @@ class ApiOrderService{
             return $result;
         }
         DB::rollback();
-        throw new AppException('订单删除失败');
+        throw new AppException('编辑订单失败',1);
     }
     
     /**
@@ -266,6 +269,6 @@ class ApiOrderService{
             return $result;
         }
         DB::rollback();
-        throw new AppException('订单删除失败');
+        throw new AppException('订单状态编辑失败');
     }
 }
