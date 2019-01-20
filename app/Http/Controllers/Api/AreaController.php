@@ -60,15 +60,91 @@ class AreaController extends Controller{
      * 
      */
     public function getareaStoreHouseList(){
-        $t1 = microtime(true);
-        $areaList= Area::get();
+        $areaList= Area::get()->toArray();
+//        foreach($areaList as $k=>$v){
+//            if(substr($v['id'],2)==='0000'){
+//                $a[$k]=[
+//                    'id'    =>$v['id'],
+//                    'name'  =>$v['province'],
+//                ];                
+//            }
+//        }
+//        unset($a['3311']);
+//        unset($a['3312']);
+//        $b=[];
+//        foreach ($a as $k=>$vo){
+//            foreach ($areaList as $v){
+//            
+//                if(substr($v['id'],2)!='0000' && substr($v['id'],0,2)==substr($v['id'],0,2)){
+//                    $b[$k]=[
+//                        'id'=>$vo['id'],
+//                        'name'  =>$vo['name'],
+//                        'sub'   =>[$k=>['id'=>$v['id'],['name'=>$v['city']]]
+//                        ]
+//                    ];
+//                }
+//            }
+//        }
+        $c=[];
+        foreach($areaList as $vo){
+            if(substr($vo['id'],2)!='0000' && substr($vo['id'],4)!=='00'){
+                $c[]=[
+                    'id'    =>$vo['id'],
+                    'name'  =>$vo['district']
+                ];
+            }
+        }
+        $b=[];
+     
+        foreach ($areaList as $vo){
+                if(substr($vo['id'],2)!='0000' && substr($vo['id'],4)==='00'&& $vo['city']!='县' && $vo['city']!='市辖区'){
+                    $b[]=[
+                        'id'    =>$vo['id'],
+                        'name'  =>$vo['city'],
+                    ];                   
+                }
+        }
+        $a=[];
+        foreach ($areaList as $v){
+            if(substr($v['id'],2)==='0000'){
+                $a[]=[
+                    'id'    =>$v['id'],
+                    'name'  =>$v['province']
+                ];
+            }
+        }
+        $xxx=[];
+        foreach ($b as $bbb){
+            $xxx[$bbb['id']]=[
+                'id'    =>$bbb['id'],
+                'name'  =>$bbb['name']
+            ];
+            foreach ($c as $ccc){
+                if(substr($bbb['id'],0,4)==substr($ccc['id'],0,4)){
+                    $xxx[$bbb['id']]['sub'][]=$ccc;
+                }
+            }
+        }
+        $i=0;
+        foreach($a as $aa){
+            $aaa[$i]    =[
+                'id'=>$aa['id'],
+                'name'  =>$aa['name'],
+            ];
+            foreach ($xxx as $bb){
+                if(substr($aa['id'],0,2)==substr($bb['id'],0,2)){
+                    $aaa[$i]['sub'][]=$bb;
+                }
+            }
+            $i++;
+        }
+        var_dump($aaa);exit;
+        
         $storeHouseList = OkcarStoreHouse::get();
         $result =[
             'areaList'  =>$areaList,
             'storeHouseList'=>$storeHouseList
         ];
-        $t2 = microtime(true);
-        echo '耗时'.round($t2-$t1,3).'秒';exit;
         return $this->json($result);
     }
 }
