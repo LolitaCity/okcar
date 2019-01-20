@@ -1,0 +1,78 @@
+ php artisan route:list
++--------+----------+-----------------------------------------------+----------+-----------------------------------------------------------------+------------------------+
+| Domain | Method   | URI                                           | Name     | Action                                                          | Middleware             |
++--------+----------+-----------------------------------------------+----------+-----------------------------------------------------------------+------------------------+
+|        | GET|HEAD | /                                             |          | Closure                                                         | web                    |
+|        | GET|HEAD | admin/api/account/baseinfo                    |          | App\Http\Controllers\Admin\AccountController@getBaseInfo        | admin_api              |
+|        | POST     | admin/api/account/create                      |          | App\Http\Controllers\Admin\AccountController@create             | admin_api,admin_auth:6 |
+|        | POST     | admin/api/account/delete                      |          | App\Http\Controllers\Admin\AccountController@delete             | admin_api,admin_auth:6 |
+|        | POST     | admin/api/account/edit                        |          | App\Http\Controllers\Admin\AccountController@edit               | admin_api,admin_auth:6 |
+|        | GET|HEAD | admin/api/account/list                        |          | App\Http\Controllers\Admin\AccountController@getList            | admin_api,admin_auth:6 |
+|        | POST     | admin/api/account/login                       |          | App\Http\Controllers\Admin\AccountController@login              | admin_api              |
+|        | GET|HEAD | admin/api/account/logout                      |          | App\Http\Controllers\Admin\AccountController@logout             | admin_api              |
+|        | POST     | admin/api/account/password                    |          | App\Http\Controllers\Admin\AccountController@changePassword     | admin_api,admin_auth   |
+|        | GET|HEAD | admin/api/advice/list                         |          | App\Http\Controllers\Admin\AdviceController@getList             | admin_api,admin_auth:4 |
+|        | GET|HEAD | admin/api/auth/enterprise                     |          | App\Http\Controllers\Admin\AuthController@getEnterpriseAuthList | admin_api,admin_auth:2 |
+|        | POST     | admin/api/auth/enterprise/pass                |          | App\Http\Controllers\Admin\AuthController@setEnterprisePass     | admin_api,admin_auth:2 |
+|        | GET|HEAD | admin/api/auth/list                           |          | App\Http\Controllers\Admin\AuthController@getUserList           | admin_api,admin_auth:2 |
+|        | GET|HEAD | admin/api/auth/personal                       |          | App\Http\Controllers\Admin\AuthController@getPersonalAuthList   | admin_api,admin_auth:2 |
+|        | POST     | admin/api/auth/personal/pass                  |          | App\Http\Controllers\Admin\AuthController@setPersonalPass       | admin_api,admin_auth:2 |
+|        | POST     | admin/api/brand/add                           |          | App\Http\Controllers\Admin\BrandController@add                  | admin_api,admin_auth:1 |
+|        | POST     | admin/api/brand/delete                        |          | App\Http\Controllers\Admin\BrandController@delete               | admin_api,admin_auth:1 |
+|        | POST     | admin/api/brand/edit                          |          | App\Http\Controllers\Admin\BrandController@edit                 | admin_api,admin_auth:1 |
+|        | GET|HEAD | admin/api/brand/list                          |          | App\Http\Controllers\Admin\BrandController@getList              | admin_api,admin_auth:1 |
+|        | POST     | admin/api/car/add                             |          | App\Http\Controllers\Admin\CarController@add                    | admin_api,admin_auth:1 |
+|        | POST     | admin/api/car/delete                          |          | App\Http\Controllers\Admin\CarController@delete                 | admin_api,admin_auth:1 |
+|        | POST     | admin/api/car/edit                            |          | App\Http\Controllers\Admin\CarController@edit                   | admin_api,admin_auth:1 |
+|        | GET|HEAD | admin/api/car/list/{brand_id?}/{series_id?}   |          | App\Http\Controllers\Admin\CarController@getList                | admin_api,admin_auth:1 |
+|        | GET|HEAD | admin/api/order/list/{key?}                   |          | App\Http\Controllers\Admin\OrderController@getList              | admin_api,admin_auth:7 |
+|        | POST     | admin/api/paymode/add                         |          | App\Http\Controllers\Admin\PaymodeController@add                | admin_api              |
+|        | POST     | admin/api/paymode/delete                      |          | App\Http\Controllers\Admin\PaymodeController@delete             | admin_api              |
+|        | POST     | admin/api/paymode/edit                        |          | App\Http\Controllers\Admin\PaymodeController@edit               | admin_api              |
+|        | GET|HEAD | admin/api/paymode/list                        |          | App\Http\Controllers\Admin\PayModeController@getList            | admin_api              |
+|        | POST     | admin/api/qa/add                              |          | App\Http\Controllers\Admin\QaController@add                     | admin_api,admin_auth:3 |
+|        | POST     | admin/api/qa/delete                           |          | App\Http\Controllers\Admin\QaController@delete                  | admin_api,admin_auth:3 |
+|        | GET|HEAD | admin/api/qa/detail                           |          | App\Http\Controllers\Admin\QaController@get                     | admin_api,admin_auth:3 |
+|        | POST     | admin/api/qa/edit                             |          | App\Http\Controllers\Admin\QaController@edit                    | admin_api,admin_auth:3 |
+|        | GET|HEAD | admin/api/qa/list                             |          | App\Http\Controllers\Admin\QaController@getList                 | admin_api,admin_auth:3 |
+|        | POST     | admin/api/qa/move                             |          | App\Http\Controllers\Admin\QaController@move                    | admin_api,admin_auth:3 |
+|        | GET|HEAD | admin/api/series/list                         |          | App\Http\Controllers\Admin\SeriesController@getList             | admin_api,admin_auth:1 |
+|        | POST     | admin/api/upload                              |          | App\Http\Controllers\CommonController@uploadpic                 | admin_api,admin_auth   |
+|        | GET|HEAD | login                                         | login    | App\Http\Controllers\Auth\LoginController@show                  | web,guest              |
+|        | POST     | okcar/api/v1/advice                           |          | App\Http\Controllers\CommonController@advice                    | api                    |
+|        | GET|HEAD | okcar/api/v1/config                           |          | Closure                                                         | noauth_api             |
+|        | POST     | okcar/api/v1/enterprise_authentication/submit |          | App\Http\Controllers\AccountController@enterpriseAuthentication | api                    |
+|        | POST     | okcar/api/v1/enterprise_authentication/update |          | Closure                                                         | api                    |
+|        | POST     | okcar/api/v1/favour                           |          | App\Http\Controllers\CarController@favour                       | api                    |
+|        | GET|HEAD | okcar/api/v1/favourlist                       |          | App\Http\Controllers\CarController@favourlist                   | api                    |
+|        | GET|HEAD | okcar/api/v1/hh                               |          | Closure                                                         | api                    |
+|        | POST     | okcar/api/v1/login                            |          | App\Http\Controllers\AccountController@login                    | noauth_api             |
+|        | GET|HEAD | okcar/api/v1/logout                           |          | App\Http\Controllers\AccountController@logout                   | api                    |
+|        | GET|HEAD | okcar/api/v1/model_appearance_info            |          | App\Http\Controllers\CarController@modelAppearanceInfo          | noauth_api             |
+|        | GET|HEAD | okcar/api/v1/model_decoration_info            |          | App\Http\Controllers\CarController@modelDecorationInfo          | noauth_api             |
+|        | GET|HEAD | okcar/api/v1/modellist                        |          | App\Http\Controllers\CarController@modellist                    | noauth_api             |
+|        | POST     | okcar/api/v1/order/create                     |          | App\Http\Controllers\FinanController@orderCreate                | api                    |
+|        | GET|HEAD | okcar/api/v1/paymodelist                      |          | App\Http\Controllers\FinanController@payModelList               | noauth_api             |
+|        | GET|HEAD | okcar/api/v1/profile                          |          | App\Http\Controllers\AccountController@profile                  | api                    |
+|        | POST     | okcar/api/v1/publish/create                   |          | App\Http\Controllers\CarController@publishCreate                | api                    |
+|        | POST     | okcar/api/v1/publish/delete                   |          | App\Http\Controllers\CarController@publishDelete                | api                    |
+|        | GET|HEAD | okcar/api/v1/publish/detail                   |          | App\Http\Controllers\CarController@publishDetail                | noauth_api             |
+|        | POST     | okcar/api/v1/publish/down                     |          | App\Http\Controllers\CarController@publishDown                  | api                    |
+|        | GET|HEAD | okcar/api/v1/publish/list                     |          | App\Http\Controllers\CarController@publishList                  | api                    |
+|        | POST     | okcar/api/v1/publish/up                       |          | App\Http\Controllers\CarController@publishUp                    | api                    |
+|        | POST     | okcar/api/v1/publish/update                   |          | App\Http\Controllers\CarController@publishUpdate                | api                    |
+|        | GET|HEAD | okcar/api/v1/qa/detail                        |          | App\Http\Controllers\Admin\QaController@get                     | noauth_api             |
+|        | GET|HEAD | okcar/api/v1/qa/list                          |          | App\Http\Controllers\Admin\QaController@getList                 | noauth_api             |
+|        | POST     | okcar/api/v1/realname_authentication/submit   |          | App\Http\Controllers\AccountController@realnameAuthentication   | api                    |
+|        | POST     | okcar/api/v1/realname_authentication/update   |          | Closure                                                         | api                    |
+|        | POST     | okcar/api/v1/register/update                  |          | App\Http\Controllers\AccountController@registerUpdate           | api                    |
+|        | GET|HEAD | okcar/api/v1/search                           |          | App\Http\Controllers\CarController@search                       | noauth_api             |
+|        | GET|HEAD | okcar/api/v1/search_count                     |          | App\Http\Controllers\CarController@searchCount                  | noauth_api             |
+|        | POST     | okcar/api/v1/sendcode                         |          | App\Http\Controllers\CommonController@sendcode                  | noauth_api             |
+|        | GET|HEAD | okcar/api/v1/sim_price_publish                |          | App\Http\Controllers\CarController@simPricePublish              | noauth_api             |
+|        | POST     | okcar/api/v1/uploadpic                        |          | App\Http\Controllers\CommonController@uploadpic                 | api                    |
+|        | GET|HEAD | register                                      | register | Closure                                                         | web                    |
+|        | GET|HEAD | v1/bb                                         |          | Closure                                                         | web                    |
+|        | GET|HEAD | v2/xx                                         |          | Closure                                                         | test                   |
++--------+----------+-----------------------------------------------+----------+-----------------------------------------------------------------+------------------------+
+
