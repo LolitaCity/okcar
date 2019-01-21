@@ -6,11 +6,11 @@
  */
 DROP TABLE IF EXISTS `okcar_store_house`;
 create table `okcar_store_house`(
-`id` int(10) unsigned NOT NULL AUTO_INCREMENT COMMENT '自增id',
-`area_id` int(10) default null COMMENT '仓库所属地区id', 
-`name` varchar(50) NOT NULL default '' COMMENT '仓库名称',
-`created_at` timestamp DEFAULT NULL COMMENT '创建时间',
-`updated_at` timestamp DEFAULT NULL COMMENT '修改时间',
-`deleted_at` timestamp DEFAULT NULL COMMENT '软删除时间',
+`id` int(11) unsigned NOT NULL AUTO_INCREMENT COMMENT '自增id',
+`area_id` int(10) unsigned DEFAULT NULL COMMENT '仓库所属地区id', 
+`name` varchar(50) NOT NULL DEFAULT '' COMMENT '仓库名称',
+`created_at` timestamp NULL DEFAULT NULL COMMENT '创建时间',
+`updated_at` timestamp NULL DEFAULT NULL COMMENT '修改时间',
+`deleted_at` timestamp NULL DEFAULT NULL COMMENT '软删除时间',
 PRIMARY KEY (`id`)
 )ENGINE=InnoDB DEFAULT CHARSET=utf8  COMMENT='平台仓库表';

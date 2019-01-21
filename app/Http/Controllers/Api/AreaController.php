@@ -94,10 +94,9 @@ class AreaController extends Controller{
                 ];
             }
         }
-        $b=[];
-     
+        $b=[];     
         foreach ($areaList as $vo){
-                if(substr($vo['id'],2)!='0000' && substr($vo['id'],4)==='00'&& $vo['city']!='县' && $vo['city']!='市辖区'){
+                if(substr($vo['id'],2)!='0000' && substr($vo['id'],4)==='00'){
                     $b[]=[
                         'id'    =>$vo['id'],
                         'name'  =>$vo['city'],
@@ -138,13 +137,51 @@ class AreaController extends Controller{
             }
             $i++;
         }
-        var_dump($aaa);exit;
-        
-        $storeHouseList = OkcarStoreHouse::get();
-        $result =[
-            'areaList'  =>$areaList,
-            'storeHouseList'=>$storeHouseList
-        ];
-        return $this->json($result);
+//        print_r($aaa);exit;
+//        
+//        $storeHouseList = OkcarStoreHouse::get();
+//        $result =[
+//            'areaList'  =>$areaList,
+//            'storeHouseList'=>$storeHouseList
+//        ];
+        return $this->json(['areaList'=>$aaa]);
     }
+    
+    /**
+     * 测试
+     */
+    public function test(){
+        $areaLists      = Area::get()->toArray();
+        $newArealList   = config('newarealist');
+        $arealList      = config('arealist');
+        $b=[];     
+        foreach ($areaLists as $vo){
+                if(substr($vo['id'],2)!='0000' && substr($vo['id'],4)==='00'){
+                    $b[]=[
+                        'id'    =>$vo['id'],
+                        'name'  =>$vo['city'],
+                    ];                   
+                }
+        }
+        
+        var_dump($arealList);exit;
+        $oldcity=[];
+        foreach ($arealList as $vo){
+            
+        }
+        
+        
+        
+        
+        foreach($b as $k=>$bb){
+            foreach($arealList as $vo){
+                if(mb_substr($bb['name'],0,2)==mb_substr($vo['name'],0,2)){
+                    $b[$k]['id']=$vo['id'];
+                }
+            }
+        }
+        var_dump($b);exit;
+        return $this->json($b);
+    }
+    
 }

@@ -12,7 +12,7 @@ use App\Models\BaseModel;
 
 class Area extends BaseModel{
     //use SoftDeletes;
-    public $table = 'china_area';
+    public $table = 'lime_china_area';
     //设置主键
     public $primaryKey = 'id';
 
