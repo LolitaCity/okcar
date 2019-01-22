@@ -86,6 +86,7 @@ Route::post('v1/getareainfo','Api\AreaController@getAreaInfo');
 #@Lee
 Route::post('v1/getareahouselist','Api\AreaController@getareaStoreHouseList');
 Route::post('v1/test','Api\AreaController@test');
+Route::post('v1/test1','Api\AreaController@test1');
 
 //订单
 Route::post('v1/getorderlist','Api\OrderController@getOrderList');

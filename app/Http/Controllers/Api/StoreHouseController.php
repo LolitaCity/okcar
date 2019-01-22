@@ -13,13 +13,15 @@ use App\Services\StoreHouseService;
 class StoreHouseController extends Controller{
     protected $service;
     protected $result;
+    protected $data;
     /**
      * 构造函数
      * 
      * @return #
      */
     public function __construct() {
-        $this->service   =new StoreHouseService();
+        $this->service  =new StoreHouseService();
+        $this->data     =json_decode(request()->input('data'),true);
     }
     
     /**
@@ -28,7 +30,7 @@ class StoreHouseController extends Controller{
      * @return #
      */
     public function creatStoreHouse(){
-        $this->result['createStoreHouse']   =$this->service->createStoreHouse(request()->all());
+        $this->result['createStoreHouse']   =$this->service->createStoreHouse($this->data);
         return $this->json($this->result);
     }
     
@@ -38,7 +40,7 @@ class StoreHouseController extends Controller{
      * @return #
      */
     public function getAllStoreHouseList(){
-        $this->result['allStoreHouseList']  =$this->service->allStoreHouseList(request()->all());
+        $this->result['allStoreHouseList']  =$this->service->allStoreHouseList($this->data);
         return $this->json($this->result);
     }
     
@@ -48,7 +50,7 @@ class StoreHouseController extends Controller{
      * @return #
      */
     public function getStoreHouseList(){
-        $this->result['storeHouseList'] =$this->service->storeHouseList(request()->all());
+        $this->result['storeHouseList'] =$this->service->storeHouseList($this->data);
         return $this->json($this->result);
     }
     
@@ -58,7 +60,7 @@ class StoreHouseController extends Controller{
      * @return #
      */
     public function getStoreHouseInfo(){
-        $this->result['storeHouseInfo'] =$this->service->storeHouseInfo(request()->all());
+        $this->result['storeHouseInfo'] =$this->service->storeHouseInfo($this->data);
         return $this->json($this->result);
     }
     
@@ -68,17 +70,17 @@ class StoreHouseController extends Controller{
      * return #
      */
     public function editStoreHouse(){
-        $this->result['editStoreHouse'] =$this->service->editStoreHouse(request()->all());
+        $this->result['editStoreHouse'] =$this->service->editStoreHouse($this->data);
         return $this->json($this->result);
     }
     
     /**
-     * 删除制定仓库
+     * 删除指定仓库
      * 
      * @return #
      */
     public function deleteStoreHouse(){
-        $this->result['deleteStoreHouse']   =$this->service->deleteStoreHouse(request()->all());
+        $this->result['deleteStoreHouse']   =$this->service->deleteStoreHouse($this->data);
         return $this->json($this->result);
     }
 }

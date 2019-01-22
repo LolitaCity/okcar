@@ -1,95 +1,45 @@
-<!doctype html>
-<html lang="{{ app()->getLocale() }}">
+<!DOCTYPE html>
+<!--
+To change this license header, choose License Headers in Project Properties.
+To change this template file, choose Tools | Templates
+and open the template in the editor.
+-->
+<html>
     <head>
-        <meta charset="utf-8">
-        <meta http-equiv="X-UA-Compatible" content="IE=edge">
-        <meta name="viewport" content="width=device-width, initial-scale=1">
-
-        <title>Laravel</title>
-
-        <!-- Fonts -->
-        <link href="https://fonts.googleapis.com/css?family=Raleway:100,600" rel="stylesheet" type="text/css">
-
-        <!-- Styles -->
-        <style>
-            html, body {
-                background-color: #fff;
-                color: #636b6f;
-                font-family: 'Raleway', sans-serif;
-                font-weight: 100;
-                height: 100vh;
-                margin: 0;
-            }
-
-            .full-height {
-                height: 100vh;
-            }
-
-            .flex-center {
-                align-items: center;
-                display: flex;
-                justify-content: center;
-            }
-
-            .position-ref {
-                position: relative;
-            }
-
-            .top-right {
-                position: absolute;
-                right: 10px;
-                top: 18px;
-            }
-
-            .content {
-                text-align: center;
-            }
-
-            .title {
-                font-size: 84px;
-            }
-
-            .links > a {
-                color: #636b6f;
-                padding: 0 25px;
-                font-size: 12px;
-                font-weight: 600;
-                letter-spacing: .1rem;
-                text-decoration: none;
-                text-transform: uppercase;
-            }
-
-            .m-b-md {
-                margin-bottom: 30px;
-            }
-        </style>
+        <title>TODO supply a title</title>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<meta property="wb:webmaster" content="a67e4e93d058b288" />
     </head>
     <body>
-        <div class="flex-center position-ref full-height">
-            @if (Route::has('login'))
-                <div class="top-right links">
-                    @auth
-                        <a href="{{ url('/home') }}">Home</a>
-                    @else
-                        <a href="{{ route('login') }}">Login</a>
-                        <a href="{{ route('register') }}">Register</a>
-                    @endauth
-                </div>
-            @endif
+        <div style="width:88%; margin: 0 auto;background-color: #169FE6">
+            我一向认为爱情是唯美的，穿过秋天的林荫道，肩并肩，踩着落叶，走向路的尽头。<br/><br/>
 
-            <div class="content">
-                <div class="title m-b-md">
-                    Laravel
-                </div>
+            也许梦太美好，路太遥远，以至于这一刻变成了永远，定格成一幅油画，最后只能挂在墙上，成为一幅装饰品。<br/><br/>
 
-                <div class="links">
-                    <a href="https://laravel.com/docs">Documentation</a>
-                    <a href="https://laracasts.com">Laracasts</a>
-                    <a href="https://laravel-news.com">News</a>
-                    <a href="https://forge.laravel.com">Forge</a>
-                    <a href="https://github.com/laravel/laravel">GitHub</a>
-                </div>
-            </div>
+            我期待着冬天的来临，因为在那一季我可以看见自己喜欢的雪！<br/><br/>
+
+            身着寒衣，即使瑟瑟的在风中走过，流过心里的依然有你。<br/><br/>
+
+            “乞力马扎罗的雪轻轻飘落 <br/><br/>
+               每一条路都被它慢慢淹没 <br/><br/>
+               生命在寒冷中冻结成冰 <br/><br/>
+              谁的魂魄在上帝的庙殿里徘徊迷惑 ...."<br/><br/>
+
+            乞力马扎罗是一座海拔一万九千七百一十英尺的长年积雪的高山，据说它是非洲最高的一座山。西高峰叫马塞人的“鄂阿奇—鄂阿伊”，即上帝的庙殿。在西高峰的近旁，有一具已经风干冻僵的豹子的尸体。豹子到这样高寒的地方来寻找什么，没有人作过解释。
+             神奇的不止是雪，好奇的不止是人。神奇不用做过多的解释，也没有了解释。<br/><br/>
+
+            想了又想，然后歪着脑袋，看着天空，心中就会有一个问题冒出来，乞力马扎罗的雪能不能飘到武汉的冬天里？<br/><br/>
+
+            淡淡一笑，也许吧！飘落的雪也能折射出乞力马扎罗的影！<br/><br/>
+
+             在昨天以前，我也不知道有一座山，叫乞力马扎罗，有一种雪，让豹子迷恋！<br/><br/>
+
+            太多事，我们不知，太多的不可思议，令我们感慨。<br/><br/>
+
+            无声无息间，感动的是你我。<br/><br/>
+
         </div>
+        <div style="width:50%; margin: 0 auto;margin-top: 2%"><a target="_blank" href="http://www.miitbeian.gov.cn" style="display:inline-block;text-decoration:none;height:20px;line-height:20px;"><img class="media-object" src="/static/admin/img/waba.png" style="float:left;">粤ICP备18123975号</a></div>
     </body>
 </html>

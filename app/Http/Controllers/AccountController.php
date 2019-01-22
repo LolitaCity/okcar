@@ -19,6 +19,7 @@ use Cache;
 use Auth;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Log;
+use App\Models\Enterprise;
 
 class AccountController extends Controller
 {
@@ -63,6 +64,7 @@ class AccountController extends Controller
         if ($ret == true) {
             $user = Auth::user();
             $userArr = $user->toArray();
+            $userArr['ele_seal_status'] =Enterprise::where(['id'=>$user['en_id']])->value('status')??0;
             $userArr['token'] = $user->remember_token;
             $config = array_merge(['arealist' => config('arealist')], config('okcar_const'));
             return $this->json([
@@ -196,6 +198,12 @@ class AccountController extends Controller
 
         try {
             EnterpriseAuthentication::updateOrCreate(['user_id' => $userId], $updated);
+            //企业认证成功，添加企业信息到企业表
+            $createEnterprise   =Enterprise::create(['enterprise_name'=>$updated['enterprise_name']]);
+            if($createEnterprise){
+                //将企业Id更新到用户表
+                User::where(['id'=>Auth::user()->id])->update(['en_id'=>$createEnterprise['id']]);
+            }
             return $this->json();
         } catch (\Exception $e) {
             throw new AppException('认证信息提交失败', 1);

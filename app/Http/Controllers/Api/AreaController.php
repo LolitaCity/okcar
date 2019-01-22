@@ -11,6 +11,10 @@ use App\Http\Controllers\Controller;
 use App\Exceptions\AppException;
 use App\Models\OkcarStoreHouse;
 use App\Models\Area;
+use Illuminate\Support\Facades\DB;
+use App\Models\StoreHouse;
+use Illuminate\Support\Facades\Auth;
+use App\Models\Enterprise;
 
 class AreaController extends Controller{
     protected $result;
@@ -151,6 +155,13 @@ class AreaController extends Controller{
      * 测试
      */
     public function test(){
+        
+                
+        $a= DB::table("store_house")->get();
+        $data['storeHouseList']=$a;
+        
+        return $this->json($data);
+        
         $areaLists      = Area::get()->toArray();
         $newArealList   = config('newarealist');
         $arealList      = config('arealist');
@@ -182,6 +193,27 @@ class AreaController extends Controller{
         }
         var_dump($b);exit;
         return $this->json($b);
+    }
+    
+    /**
+     * 测试
+     */
+    public function test1(){
+        $user=Auth::user()->toArray();
+        $user['ele_seal_status']    = Enterprise::where(['id'=>$user['en_id']])->value('status')??0;
+        var_dump($user);exit;
+        
+        
+        $data= json_decode(request()->input('data'),true);
+        //$result =StoreHouse::create($data);
+//        var_dump($data);exit;
+//        $result= StoreHouse::where('id','=',$data['id'])->update($data);
+//        $result =StoreHouse::where('id','=',$data['id'])->delete();
+        $result =StoreHouse::where('id','=',$data['id'])->first();
+//        $result =DB::table('enterprise')->first();
+//        $result =DB::table('electronic_seal_auth')->first();
+        var_dump($result['area']);exit;
+        return $this->json(['status'=>$result]);
     }
     
 }

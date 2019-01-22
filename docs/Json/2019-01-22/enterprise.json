@@ -1,0 +1,32 @@
+{
+    "err": 0,
+    "msg": "ok",
+    "data": {
+        "storeHouseList": [
+            {
+                "id": 1,
+                "area": "广东深圳南山",
+                "type": "集中仓",
+                "name": "科技园仓库",
+                "address": "深南大道10000号",
+                "default_flag": 0,
+                "created_id": 50,
+                "created_at": null,
+                "updated_at": null,
+                "deleted_at": null
+            },
+            {
+                "id": 2,
+                "area": "广东深圳南山",
+                "type": "集中仓",
+                "name": "蛇口仓库",
+                "address": "南海大道9999号",
+                "default_flag": 1,
+                "created_id": 50,
+                "created_at": null,
+                "updated_at": null,
+                "deleted_at": null
+            }
+        ]
+    }
+}
