@@ -66,7 +66,7 @@ class AccountController extends Controller
             $userArr = $user->toArray();
             $userArr['ele_seal_status'] =Enterprise::where(['id'=>$user['en_id']])->value('status')??0;
             $userArr['token'] = $user->remember_token;
-            $config = array_merge(['arealist' => config('arealist')], config('okcar_const'));
+            $config = array_merge(['arealist' => config('newarealist')], config('okcar_const'));
             return $this->json([
                 'user' => $userArr,
                 'config' => $config]);
